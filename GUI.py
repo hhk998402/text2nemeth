@@ -24,11 +24,11 @@ def callback():
 
 b = Button(master, text="Convert to Braille", width=20, command=callback)
 b.pack()
-T = Text(master, height=2, width=30)
+T = Text(master, height=10, width=30)
 T.pack()
 
 mainloop()
-e = Entry(master, width=1000)
+e = Entry(master, height = 10,width=1000)
 e.pack()
 
 

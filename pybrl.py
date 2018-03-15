@@ -50,7 +50,7 @@ mathsym={'!': '111101',
     '+': '001101',
     '-': '001001',
     '/': '000111001100',
-    '=': '111111',
+    '=': '000101101000',
     '[': '000100111011',
     ']': '000100011111',
     '{': '000101111011',
@@ -234,7 +234,6 @@ def translate(text, main_language = None):
     - Uses the available rules to keep the context clear
     """
     global importedAlphabets, importedContractions, importedSpecials, _orderedSplitters, importedSymbols
-
     if type(text) != list:
         text = preprocess(text)
 
@@ -438,8 +437,10 @@ def translate(text, main_language = None):
             if len(brl) == 6:
                 normalizedBrl.append(brl)
             else:
-                for i in xrange(len(brl) // 6):
+                i=0
+                while(i<len(brl)):
                     normalizedBrl.append(brl[i:i+6])
+                    i+=6
 
         output.append(normalizedBrl)
 
@@ -454,6 +455,7 @@ def toUnicodeSymbols(brl, flatten=False):
     retObj=[]
 
     for wrd in brl:
+        print(wrd)
         retObj.append([])
         for ch in wrd:
             binary_repr = int(ch[::-1], 2)
